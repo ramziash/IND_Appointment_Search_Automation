@@ -9,8 +9,12 @@ schedule = json.loads(result[5:])['data']
 
 add_days = [(datetime.strptime(x['date'], '%Y-%m-%d').strftime('%A'), x) for x in schedule[:10]]
 
+start = datetime.strptime("2022-06-08", "%Y-%m-%d")
+date_generated = pd.date_range(start, periods=30)
+date_required=date_generated.strftime("%Y-%m-%d")
+
 # Choose the dates you want the automation to look for
-date_required = ['2022-03-30', '2022-04-04', '2022-04-06']
+#date_required = ['2022-03-30', '2022-04-04', '2022-04-06']
 
 if any(datee in str(add_days) for datee in date_required):
     print('Option Available')
